@@ -1,40 +1,41 @@
 <?php
 
 if ( ! function_exists( 'upFind' ) ) {
+//MIT License, Copyright Nathan Wooten 2022
 function upFind( $directory, array $directoryContains )
 {
 
-	$is = [];
+  $is = [];
 
-	while( $directory ) {
+  while( $directory ) {
 
-		if ( is_file( $directory ) ) {
-			$directory = dirname( $directory ) . DIRECTORY_SEPARATOR;
-		} else {
-			$directory = rtrim( $directory, DIRECTORY_SEPARATOR ) . DIRECTORY_SEPARATOR;
-		}
+    if ( is_file( $directory ) ) {
+      $directory = dirname( $directory ) . DIRECTORY_SEPARATOR;
+    } else {
+      $directory = rtrim( $directory, DIRECTORY_SEPARATOR ) . DIRECTORY_SEPARATOR;
+    }
 
-		foreach ( $directoryContains as $contains ) {
-			$item = $directory . $contains;
+    foreach ( $directoryContains as $contains ) {
+      $item = $directory . $contains;
 
-			if ( is_readable( $item ) ) {
-				$is[] = $item;
-			}
-		}
+      if ( is_readable( $item ) ) {
+        $is[] = $item;
+      }
+    }
 
-		if ( count( $is ) === count( $directoryContains ) ) {
-			return $directory;
-		}
+    if ( count( $is ) === count( $directoryContains ) ) {
+      return $directory;
+    }
 
-		$parent = dirname( $directory );
-		if ( $parent === $directory ) {
-			$directory = false;
-		} else {
-			$directory = $parent;
-		}
-	}
+    $parent = dirname( $directory );
+    if ( $parent === $directory ) {
+      $directory = false;
+    } else {
+      $directory = $parent;
+    }
+  }
 
-	return $directory;
+  return $directory;
 
 }
 }
