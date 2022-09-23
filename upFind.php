@@ -1,7 +1,8 @@
 <?php
 
+// PUCLIC DOMAIN, The Unlicense
+
 if ( ! function_exists( 'upFind' ) ) {
-//MIT License, Copyright Nathan Wooten 2022
 function upFind( $directory, array $directoryContains )
 {
 
