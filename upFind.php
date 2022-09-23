@@ -1,6 +1,6 @@
 <?php
 
-// PUCLIC DOMAIN, The Unlicense
+// The Unlicense, PUBLIC DOMAIN
 
 if ( ! function_exists( 'upFind' ) ) {
 function upFind( $directory, array $directoryContains )
